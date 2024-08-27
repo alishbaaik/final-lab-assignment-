@@ -1,0 +1,47 @@
+"""create a program that uses dictionaries to store student names as keys and their grades as values. implement functions to add,update,and delete student records,and to calculate the average grade"""
+
+records = {}
+def add_student(name, grade):
+    if name in records:
+        print("Error, Student exists")
+    else:
+        records[name] = grade
+        print("Added student", name, "grade",str(grade))
+
+def update_student(name, grade):
+    if name in records:
+        records[name] = grade
+        print("Updated grade for student ",name,"is",str(grade))
+    else:
+        print("Student does not exist")
+
+def delete_student(name):
+    if name in records:
+        del records[name]
+        print("Deleted student ",name)
+    else:
+        print("Error: Student does not exist.")
+
+def calculate_average_grade():
+    if not records:
+        print("No records available.")
+    else:
+        average = sum(records.values()) / len(records)
+        print("Average grade: " + str(round(average, 2)))
+
+def display_records():
+    if not records:
+        print("No records available.")
+    else:
+        result = ""
+        for name, grade in records.items():
+            result = result + "Student: " + name + ", Grade: " + str(grade) + "\n"
+        print(result.strip())
+
+if __name__ == "__main__":
+    add_student("Alishba iqbal", 90)
+    add_student("muskan iqbal", 85)
+    update_student("Alishba iqbale", 95)
+    delete_student("muskan iqbal")
+    calculate_average_grade()
+    display_records()
